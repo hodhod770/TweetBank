@@ -24,7 +24,7 @@ class Tweets extends Component
         $validatedData = $this->validate([
             't' => 'required|in:text,image,video',
             'texts' => 'required|string|max:280',
-            'urls' => $this->t == "text" ? 'nullable' : 'required|url',
+            'urls' => $this->t == "text" ? 'nullable' : 'required',
             'campaign_id' => 'required|exists:hmlhs,uid',
         ], [
             't.required' => 'يجب اختيار نوع التغريدة.',
