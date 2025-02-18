@@ -43,10 +43,10 @@ class Tweets extends Component
         $data->hmlh_id = $this->campaign_id;
     
         if ($this->t == "image") {
-            $data->urls = $this->urls . '/photo/1';
+            $data->urls = trim($this->urls).'/photo/1';
             $data->type = "1";
         } elseif ($this->t == "video") {
-            $data->urls = $this->urls . '/video/1';
+            $data->urls = trim($this->urls).'/video/1';
             $data->type = "2";
         } else {
             $data->type = "0";
@@ -55,6 +55,11 @@ class Tweets extends Component
         $data->save();
         session()->flash('message', 'تم حفظ التغريدة بنجاح!');
         $this->reset(['urls','texts']);
+    }
+    public function delete($id)
+    {
+        $d=TweetsTable::find($id); 
+        $d->delete();
     }
     
 

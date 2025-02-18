@@ -72,6 +72,7 @@
           <div class="card p-2">
            <center>{{$key+1}}</center>
             <h2> {{$item->texts}}</h2>
+            <button class="btn btn-danger" wire:click='delete({{$item->id}})'>حذف</button>
 
           </div>
         </div>
