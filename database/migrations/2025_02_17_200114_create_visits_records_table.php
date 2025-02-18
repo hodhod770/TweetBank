@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('visits_records', function (Blueprint $table) {
             $table->id();
             $table->string('ip');
-            $table->unsignedBigInteger('hmlh_id');
+            $table->String('hmlh_id');
             $table->string('continent')->nullable();
             $table->string('continent_code')->nullable();
             $table->string('country')->nullable();

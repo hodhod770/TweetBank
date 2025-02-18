@@ -7,6 +7,7 @@ use App\Models\Tweets as twt;
 use App\Livewire\HomePage;
 use App\Livewire\Hmlh;
 use App\Livewire\Tweets;
+use App\Livewire\Showvist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
@@ -78,4 +79,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/homepage', HomePage::class)->name('homepage');
     Route::get('/hamlh', Hmlh::class)->name('hamlh');
     Route::get('/Tweets', Tweets::class)->name('Tweets');
+    Route::get('/Showvist/{id}', Showvist::class)->name('Showvist');
 });

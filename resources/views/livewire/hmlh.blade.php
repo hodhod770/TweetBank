@@ -57,6 +57,7 @@
                                 <th>#</th>
                                 <th>الاسم</th>
                                 <th>الملاحظات</th>
+                                <th>الرابط</th>
                                 <th>العمليات</th>
                             </tr>
                         </thead>
@@ -66,6 +67,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->note }}</td>
+                                    <td><a href="https://www.tweetsbank.online/campaign/{{$item->uid}}">فتح</a></td>
                                     <td>
                                         <button class="btn btn-sm btn-warning"
                                             wire:click="edit({{ $item->id }})">تعديل</button>

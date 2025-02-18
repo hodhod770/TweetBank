@@ -17,7 +17,7 @@ return new class extends Migration
             $table->String('urls')->nullable();
             $table->String('type');
             $table->boolean(column: 'isshow')->default(1);
-            $table->unsignedBigInteger('hmlh_id');
+            $table->String('hmlh_id');
             $table->timestamps();
         });
     }
