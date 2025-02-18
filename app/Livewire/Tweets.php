@@ -54,7 +54,7 @@ class Tweets extends Component
     
         $data->save();
         session()->flash('message', 'تم حفظ التغريدة بنجاح!');
-        $this->reset();
+        $this->reset(['urls','texts']);
     }
     
 
