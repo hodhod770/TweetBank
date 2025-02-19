@@ -69,15 +69,15 @@
                                                 التغريدات
                                             </span>
                                         </h1> --}}
-                                        <p>
+                                        {{-- <p>
                                             أهلًا وسهلًا في بنك التغريدات!
                                         </p>
                                         <a href="">
                                             عرض التغريدات
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="img-box">
                                       <img src="{{asset('s2.gif')}}" alt="">
                                     </div>
