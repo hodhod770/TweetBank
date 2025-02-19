@@ -11,6 +11,22 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <style>
+        .img-box {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+    </style>
 
     <title>بنك تغريدات الجنوب العربي</title>
 
@@ -56,27 +72,7 @@
                     <div class="carousel-item active">
                         <div class="container ">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <div class="play_btn">
-                                            <button>
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        {{-- <h1>
-                                            بنك <br>
-                                            <span>
-                                                التغريدات
-                                            </span>
-                                        </h1> --}}
-                                        {{-- <p>
-                                            أهلًا وسهلًا في بنك التغريدات!
-                                        </p>
-                                        <a href="">
-                                            عرض التغريدات
-                                        </a>
-                                    </div> --}}
-                                </div>
+                                
                                 <div class="col-md-12">
                                     <div class="img-box">
                                       <img src="{{asset('s3.gif')}}" alt="">
