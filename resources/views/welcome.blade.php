@@ -90,7 +90,7 @@
         <!-- end slider section -->
     </div>
 
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://x.com/bn_ly82524/status/1891554763474342151/video/1&quote=الاوضاع هنا متوترة والكل يعيش بقلق، والحديث عن الاستقرار باين ما له وجود.%0A%0A#ثوره_جياع%0A#عدن_تنتفض" target="_blank" class="btn btn-dark fa fa-facebook">مشاركة</a>
+    {{-- <a href="https://www.facebook.com/sharer/sharer.php?u=https://x.com/bn_ly82524/status/1891554763474342151/video/1&quote=الاوضاع هنا متوترة والكل يعيش بقلق، والحديث عن الاستقرار باين ما له وجود.%0A%0A#ثوره_جياع%0A#عدن_تنتفض" target="_blank" class="btn btn-dark fa fa-facebook">مشاركة</a> --}}
 
     <section class="book_section layout_padding" style="text-align: center; " dir="rtl">
         <div class="row">
