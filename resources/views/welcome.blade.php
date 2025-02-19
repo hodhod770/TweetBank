@@ -168,13 +168,13 @@ var tweetUrl = "https://example.com";
 
 
     <!-- footer section -->
-    <footer class="footer_section">
+    {{-- <footer class="footer_section">
         <div class="container">
             <p>
                 &copy; <span id="displayYear"></span> بنك تغريدات الجنوب العربي
             </p>
         </div>
-    </footer>
+    </footer> --}}
     <!-- footer section -->
 
     <!-- jQery -->
