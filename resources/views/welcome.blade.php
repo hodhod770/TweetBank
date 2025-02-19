@@ -12,7 +12,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Mico</title>
+    <title>بنك تغريدات الجنوب العربي</title>
 
 
     <!-- bootstrap core css -->
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="img-box">
-                                      <img src="{{asset('s2.png')}}" alt="">
+                                      <img src="{{asset('s2.gif')}}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -176,8 +176,7 @@ var tweetUrl = "https://example.com";
     <footer class="footer_section">
         <div class="container">
             <p>
-                &copy; <span id="displayYear"></span> All Rights Reserved By
-                <a href="">Yemen Tweets bank H.D</a>
+                &copy; <span id="displayYear"></span> بنك تغريدات الجنوب العربي
             </p>
         </div>
     </footer>
