@@ -63,12 +63,12 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                        <h1>
+                                        {{-- <h1>
                                             بنك <br>
                                             <span>
                                                 التغريدات
                                             </span>
-                                        </h1>
+                                        </h1> --}}
                                         <p>
                                             أهلًا وسهلًا في بنك التغريدات!
                                         </p>
