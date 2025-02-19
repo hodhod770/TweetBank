@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="img-box">
-                                      <img src="{{asset('s2.gif')}}" alt="">
+                                      <img src="{{asset('s3.gif')}}" alt="">
                                     </div>
                                 </div>
                             </div>
