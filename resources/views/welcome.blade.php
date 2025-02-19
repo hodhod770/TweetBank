@@ -13,8 +13,7 @@
     <meta name="author" content="" />
     <style>
         .img-box {
-    width: 100vw;
-    height: 100vh;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,16 +69,16 @@
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="container ">
+                      
                             <div class="row">
                                 
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <div class="img-box">
                                       <img src="{{asset('s3.gif')}}" alt="">
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                       
                     </div>
 
 
