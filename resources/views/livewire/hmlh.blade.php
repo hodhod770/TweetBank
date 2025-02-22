@@ -22,12 +22,7 @@
                                 aria-label="Close"></button>
                         </div>
                     @endif
-                    <div  class="mb-3" x-data="{ uploading: false, progress: 0 }"
-                    x-on:livewire-upload-start="uploading = true"
-                    x-on:livewire-upload-finish="uploading = false"
-                    x-on:livewire-upload-cancel="uploading = false"
-                    x-on:livewire-upload-error="uploading = false"
-                    x-on:livewire-upload-progress="progress = $event.detail.progress">
+                    <div class="mb-3">
                         <label for="campaignName" class="form-label">اسم الحملة</label>
                         <input wire:model="name" type="text" class="form-control" id="campaignName"
                             placeholder="أدخل اسم الحملة">
@@ -36,13 +31,16 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3" x-data="{ uploading: false, progress: 0 }" x-on:livewire-upload-start="uploading = true"
+                        x-on:livewire-upload-finish="uploading = false" x-on:livewire-upload-cancel="uploading = false"
+                        x-on:livewire-upload-error="uploading = false"
+                        x-on:livewire-upload-progress="progress = $event.detail.progress">
                         <label for="campaignName" class="form-label">صورة الحملة</label>
                         <input wire:model.live="image" type="file" class="form-control" id="campaignName"
                             placeholder="أدخل صورة الحملة">
-                            <div x-show="uploading">
-                                <progress max="100" x-bind:value="progress"></progress>
-                            </div>
+                        <div x-show="uploading">
+                            <progress max="100" x-bind:value="progress"></progress>
+                        </div>
                         @error('image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -84,12 +82,27 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->note }}</td>
-                                    <td><a href="https://www.tweetsbank.online/campaign/{{$item->uid}}">فتح</a></td>
-                                    <td>
+                                    <td><a href="https://www.tweetsbank.online/campaign/{{ $item->uid }}">فتح</a>
+                                    </td>
+                                    <td x-data="{ uploading: false, progress: 0 }" x-on:livewire-upload-start="uploading = true"
+                                        x-on:livewire-upload-finish="uploading = false"
+                                        x-on:livewire-upload-cancel="uploading = false"
+                                        x-on:livewire-upload-error="uploading = false"
+                                        x-on:livewire-upload-progress="progress = $event.detail.progress">
                                         <button class="btn btn-sm btn-warning"
                                             wire:click="edit({{ $item->id }})">تعديل</button>
                                         <button class="btn btn-sm btn-danger"
                                             wire:click="delete({{ $item->id }})">حذف</button>
+                                       <form wire:submit='changeimage("{{$item->uid}}")' method="post">
+                                        <input wire:model.live="image" type="file" class="form-control"
+                                        id="campaignName" placeholder="أدخل صورة الحملة">
+                                    <div x-show="uploading">
+                                        <progress max="100" x-bind:value="progress"></progress>
+                                    </div>
+
+                                    <button class="btn btn-sm btn-info"
+                                   type="submit">تغيير الصورة</button>
+                                       </form>
                                     </td>
                                 </tr>
                             @endforeach

@@ -59,6 +59,22 @@ class Hmlh extends Component
         $this->note = $record->note;
         $this->isEditMode = true;
     }
+    public function changeimage($id)
+    {
+        // dd($this->image);
+        $validatedData = $this->validate([
+     
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif'
+        ], [
+            'image.image' => 'يجب أن يكون الملف صورة.',
+            'image.mimes' => 'يجب أن تكون الصورة بصيغة: jpeg, png, jpg, gif.',
+        ]);
+        $uniqueName = Str::uuid() . '.' . $this->image->getClientOriginalExtension();
+        $this->image->storeAs(path: 'TF', name: $uniqueName);
+        $record = Hmlht::where('uid',$id)->first();
+        $record->image=$uniqueName;
+        $record->save();
+    }
     public function update()
     {
         $validatedData = $this->validate([
