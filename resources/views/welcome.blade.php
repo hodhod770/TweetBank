@@ -75,7 +75,13 @@
                                 <div class="col-12">
                                     <div class="img-box">
                                         @if ($hm)
-                                            
+                                            @if ($hm->image)
+                                        <img src="{{asset('storage/'.$hm->image)}}" alt="">
+                                                
+                                            @else
+                                        <img src="{{asset('s3.gif')}}" alt="">
+                                                
+                                            @endif
                                         <img src="{{asset('storage/'.$hm->image??'s3.gif')}}" alt="">
                                         @else
                                         <img src="{{asset('s3.gif')}}" alt="">
