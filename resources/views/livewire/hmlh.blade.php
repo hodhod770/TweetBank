@@ -22,11 +22,28 @@
                                 aria-label="Close"></button>
                         </div>
                     @endif
-                    <div class="mb-3">
+                    <div  class="mb-3" x-data="{ uploading: false, progress: 0 }"
+                    x-on:livewire-upload-start="uploading = true"
+                    x-on:livewire-upload-finish="uploading = false"
+                    x-on:livewire-upload-cancel="uploading = false"
+                    x-on:livewire-upload-error="uploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress">
                         <label for="campaignName" class="form-label">اسم الحملة</label>
                         <input wire:model="name" type="text" class="form-control" id="campaignName"
                             placeholder="أدخل اسم الحملة">
                         @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="campaignName" class="form-label">صورة الحملة</label>
+                        <input wire:model.live="image" type="file" class="form-control" id="campaignName"
+                            placeholder="أدخل صورة الحملة">
+                            <div x-show="uploading">
+                                <progress max="100" x-bind:value="progress"></progress>
+                            </div>
+                        @error('image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

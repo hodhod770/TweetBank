@@ -6,8 +6,12 @@ use Livewire\Component;
 use App\Models\Hmlh as Hmlht ; 
 use Auth;
 use Str;
+use Livewire\WithFileUploads;
+
 class Hmlh extends Component
 {
+    use WithFileUploads;
+
     public function render()
     {
         $data = Hmlht::all();
@@ -15,25 +19,33 @@ class Hmlh extends Component
     }
     public $name;
     public $note;
+    public $image;
     public $selectedId;
     public $isEditMode = false;
 
     public function storehmlh()
     {
+        // dd($this->image);
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
             'note' => 'nullable|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif'
         ], [
             'name.required' => 'اسم الحقل مطلوب.',
             'name.string'   => 'يجب أن يكون الاسم نصًا.',
             'name.max'      => 'يجب ألا يتجاوز الاسم 255 حرفًا.',
             'note.string'   => 'يجب أن يكون الحقل ملاحظات نصًا.',
+            'image.image' => 'يجب أن يكون الملف صورة.',
+            'image.mimes' => 'يجب أن تكون الصورة بصيغة: jpeg, png, jpg, gif.',
         ]);
+        $uniqueName = Str::uuid() . '.' . $this->image->getClientOriginalExtension();
+        $this->image->storeAs(path: 'TF', name: $uniqueName);
         $h=new Hmlht();
         $h->name=$this->name;
+        $h->image=$uniqueName;
         $h->uid=Str::uuid();
         $h->note=$this->note;
-        $h->createed_by=Auth::id();;
+        $h->createed_by=Auth::id();
         $h->save();
         $this->resetInput();
         session()->flash('message', 'تم حفظ البيانات بنجاح!');

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\VisitsRecords;
 use App\Models\Tweets as twt;
+use App\Models\Hmlh as Hm;
 use App\Livewire\HomePage;
 use App\Livewire\Hmlh;
 use App\Livewire\Tweets;
@@ -29,6 +30,7 @@ Route::get('/', function () {
 Route::get('/campaign/{id}', function ($id,Request $request) {
     // dd($request->ip());
     $tw = twt::where('hmlh_id',$id)->get();
+    $hm = Hm::where('uid',$id)->first();
     $ip = $request->ip();
     
     // جلب بيانات الموقع الجغرافي من ip-api.com
@@ -69,7 +71,7 @@ Route::get('/campaign/{id}', function ($id,Request $request) {
     //     Cookie::queue('visited', '1', 10);
     // }
 
-    return view('welcome',['tw'=>$tw]);
+    return view('welcome',['tw'=>$tw,'hm'=>$hm]);
 })->name('campaign');
 
 Auth::routes();

@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>بنك التغريدات</title>
-
+    
     <!-- تحميل Bootstrap و Popper -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
     <!-- تحميل Alpine.js -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+    {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> --}}
+    
     <style>
         body {
             background: #f0f2f5;
@@ -28,14 +28,14 @@
             font-weight: 700;
             border-bottom: 2px solid #fff;
         }
-    </style>
+        </style>
 
-    @livewireStyles
+@livewireStyles
 </head>
 <body>
 
     <div class="container">
-        <div>
+        
 
             <!-- شريط التنقل مع Alpine.js للتحكم في الفئة النشطة -->
             <nav  x-data="{ activeTab: window.location.pathname }" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -87,11 +87,11 @@
             <!-- محتوى التبويبات -->
             {{$slot}}
 
-        </div>
+        
     </div>
 
+    
     @livewireScripts
-
     <!-- تحميل Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 

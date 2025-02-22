@@ -5,9 +5,14 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Tweets as TweetsTable;
 use App\Models\Hmlh ; 
+use App\Imports\TweetsImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Livewire\WithFileUploads;
 
 class Tweets extends Component
 {
+    use WithFileUploads;
+
     public function render()
     {
         $hm = Hmlh::all();
@@ -18,6 +23,7 @@ class Tweets extends Component
     public $urls;
     public $texts;
     public $campaign_id=0;
+    public $file;
 
     public function saveTweet()
     {
@@ -60,6 +66,21 @@ class Tweets extends Component
     {
         $d=TweetsTable::find($id); 
         $d->delete();
+    }
+
+    public function importExcel()
+    {
+        // Validate that a file is provided and it is of the correct type
+        $validatedData = $this->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv',
+            'campaign_id' => 'required|exists:hmlhs,uid',
+        ]);
+        Excel::import(new TweetsImport($this->campaign_id), $this->file);
+        // Import the Excel file using the TweetsImport class
+        // Excel::import(new TweetsImport, $this->file);
+
+        // Flash a success message
+        session()->flash('message', 'تم حفظ التغريدات بنجاح!');
     }
     
 

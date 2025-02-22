@@ -74,7 +74,13 @@
                                 
                                 <div class="col-12">
                                     <div class="img-box">
-                                      <img src="{{asset('s3.gif')}}" alt="">
+                                        @if ($hm)
+                                            
+                                        <img src="{{asset('storage/TF/'.$hm->image)}}" alt="">
+                                        @else
+                                        <img src="{{asset('s3.gif')}}" alt="">
+                                            
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -122,13 +128,13 @@
             @endforeach --}}
 
 
-            @foreach ($tw as $item)
+            @foreach ($tw as $key=>$item)
             <div class="col-md-4 col-12">
 
                 <div class="card">
                     <div class="row">
                         <div class="col-12 ">
-                            <h1><span style="color: #00c6a9;">تغريدة</span></h1>
+                            <h1><span style="color: #00c6a9;">تغريدة {{$key+1}}</span></h1>
                         </div>
 
                         <div class="col-12 p-4">

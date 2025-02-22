@@ -16,6 +16,7 @@ return new class extends Migration
             $table->String('name');
             $table->String('uid');
             $table->String('note');
+            $table->String('image')->nullable();
             $table->integer('createed_by');
             $table->timestamps();
         });
