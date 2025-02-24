@@ -145,7 +145,7 @@
 
                         <div class="col-12 p-4">
                            <p>{{$item->texts}}</p>
-                           <hr  style=" border: 2px solid #00c6a9;width: 100%;">
+                           <hr  style=" border: 2px solid #00c6a9;width: 100%; font-size: 30px;">
                         </div>
 
 
