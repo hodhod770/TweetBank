@@ -135,9 +135,9 @@
 
 
             @foreach ($tw as $key=>$item)
-            <div class="col-md-4 col-12">
+            <div  class="col-12 m-2">
 
-                <div class="card">
+                <div onclick="shareOnTwitter(`{{$item->texts}}`, '{{$item->urls}}')" class="card">
                     <div class="row">
                         <div class="col-12 ">
                             <h1><span style="color: #00c6a9;">تغريدة {{$key+1}}</span></h1>
