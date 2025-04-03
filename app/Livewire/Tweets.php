@@ -16,7 +16,7 @@ class Tweets extends Component
     public function render()
     {
         $hm = Hmlh::all();
-        $tw = TweetsTable::all();
+        $tw = TweetsTable::where('hmlh_id',$this->campaign_id)->get();
         return view('livewire.tweets',['hm'=>$hm,'tw'=>$tw]);
     }
     public $t;
