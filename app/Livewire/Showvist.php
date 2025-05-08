@@ -9,7 +9,7 @@ class Showvist extends Component
     public $id;
     public function render()
     {
-        $ips= VisitsRecords::where('id',$this->id)->first();;
+        $ips= VisitsRecords::where('id',$this->id)->first();
 
         return view('livewire.showvist',['data'=>$ips]);
     }

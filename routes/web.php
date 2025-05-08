@@ -12,6 +12,7 @@ use App\Livewire\Showvist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\TelegramController;
 
 Route::get('/', function () {
     $user=User::get();
@@ -30,6 +31,7 @@ Route::get('/', function () {
 Route::get('/campaign/{id}', function ($id,Request $request) {
     // dd($request->ip());
     $tw = twt::where('hmlh_id',$id)->get();
+    // dd($tw);
     $hm = Hm::where('uid',$id)->first();
     $ip = $request->ip();
     
@@ -83,3 +85,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Tweets', Tweets::class)->name('Tweets');
     Route::get('/Showvist/{id}', Showvist::class)->name('Showvist');
 });
+Route::post('/telegram/webhook', [TelegramController::class, 'webhook'])->name('webhook');

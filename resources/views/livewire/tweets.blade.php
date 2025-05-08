@@ -73,22 +73,26 @@
     </div>
 
     <div class="card m-2 p-2">
-        <form wire:submit="importExcel">
+        <form wire:submit="readcsv" method="post" enctype="multipart/form-data">
             <div class="row">
                 @if (session()->has('message'))
                     <div style="color: green;">{{ session('message') }}</div>
                 @endif
 
                 <div class="col-md-6 col-6">
-                    <label class="lable-control" for="file">اختر ملف Excel:</label>
-                    <input class="form-control" type="file" id="file" wire:model="file">
+                    <label class="lable-control" for="file">اختر ملف Csv:</label>
+                    <input class="form-control" type="file" id="file" wire:model="fileNamecsv">
+                    @error('fileNamecsv')
+                        <span style="color: red;">{{ $message }}</span>
+                        
+                    @enderror
                     @error('file')
                         <span style="color: red;">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-md-6 col-12 mt-3">
                     <label for="tweetType">الحملة</label>
-                    <select wire:model.live="campaign_id" id="tweetType" class="form-control">
+                    <select wire:model.live="hamlh_idcsv" id="tweetType" class="form-control">
                         <option value="0">اختر الحملة</option>
                         @foreach ($hm as $item)
                             <option value="{{$item->uid}}">{{$item->name}}</option>

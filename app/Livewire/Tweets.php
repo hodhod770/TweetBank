@@ -4,11 +4,12 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Tweets as TweetsTable;
-use App\Models\Hmlh ; 
+use App\Models\Hmlh;
 use App\Imports\TweetsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Livewire\WithFileUploads;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Collection;
 class Tweets extends Component
 {
     use WithFileUploads;
@@ -16,13 +17,13 @@ class Tweets extends Component
     public function render()
     {
         $hm = Hmlh::all();
-        $tw = TweetsTable::where('hmlh_id',$this->campaign_id)->get();
-        return view('livewire.tweets',['hm'=>$hm,'tw'=>$tw]);
+        $tw = TweetsTable::where('hmlh_id', $this->campaign_id)->get();
+        return view('livewire.tweets', ['hm' => $hm, 'tw' => $tw]);
     }
     public $t;
     public $urls;
     public $texts;
-    public $campaign_id=0;
+    public $campaign_id = 0;
     public $file;
 
     public function saveTweet()
@@ -43,28 +44,28 @@ class Tweets extends Component
             'campaign_id.exists' => 'رقم الحملة غير صحيح، يرجى اختيار حملة موجودة.',
             'campaign_id.required' => 'يجب اختيار الحملة.',
         ]);
-    
+
         $data = new TweetsTable();
         $data->texts = $this->texts;
         $data->hmlh_id = $this->campaign_id;
-    
+
         if ($this->t == "image") {
-            $data->urls = trim($this->urls).'/photo/1';
+            $data->urls = trim($this->urls) . '/photo/1';
             $data->type = "1";
         } elseif ($this->t == "video") {
-            $data->urls = trim($this->urls).'/video/1';
+            $data->urls = trim($this->urls) . '/video/1';
             $data->type = "2";
         } else {
             $data->type = "0";
         }
-    
+
         $data->save();
         session()->flash('message', 'تم حفظ التغريدة بنجاح!');
-        $this->reset(['urls','texts']);
+        $this->reset(['urls', 'texts']);
     }
     public function delete($id)
     {
-        $d=TweetsTable::find($id); 
+        $d = TweetsTable::find($id);
         $d->delete();
     }
 
@@ -82,6 +83,42 @@ class Tweets extends Component
         // Flash a success message
         session()->flash('message', 'تم حفظ التغريدات بنجاح!');
     }
-    
+    public $fileNamecsv;
+    public $hamlh_idcsv;
+    public function readcsv()
+    {
+        
+        $this->validate([
+            'fileNamecsv' => 'file|mimes:xlsx,xls,csv',
+        ]);
+        $path = $this->fileNamecsv->getRealPath();
+        $rows = collect();
+
+        if (($handle = fopen($path, 'r')) !== false) {
+            $header = fgetcsv($handle);
+
+            while (($data = fgetcsv($handle)) !== false) {
+                if (count($data) === count($header)) {
+                    $rows->push(array_combine($header, $data));
+                }
+            }
+
+            fclose($handle);
+        }
+
+        $dataToInsert = $rows->map(function ($row) {
+            return [
+                'texts'=> $row['texts'] ?? null,
+                'urls'=> $row['urls'] ?? null,
+                'type'       => 'csv',
+                'isshow'     => 1,
+                'hmlh_id'    => $this->hamlh_idcsv,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        });
+        TweetsTable::insert($dataToInsert->toArray());
+        session()->flash('message', 'تم حفظ التغريدات بنجاح!');
+    }
 
 }
