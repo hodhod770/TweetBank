@@ -150,7 +150,7 @@
 
 
                         <div class="col-12 p-4">
-                           <button onclick="shareOnTwitter(`{{$item->texts}}`, '{{$item->urls}}')" class="btn btn-dark fa fa-twitter">تغريد</button>
+                           <button onclick="shareOnTwitter(`{{$item->texts}}`, `{{$item->urls}}`)" class="btn btn-dark fa fa-twitter">تغريد</button>
                          </div>
                         
                         
