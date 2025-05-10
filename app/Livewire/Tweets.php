@@ -50,10 +50,10 @@ class Tweets extends Component
         $data->hmlh_id = $this->campaign_id;
 
         if ($this->t == "image") {
-            $data->urls = trim($this->urls) . '/photo/1';
+            $data->urls = trim($this->urls);
             $data->type = "1";
         } elseif ($this->t == "video") {
-            $data->urls = trim($this->urls) . '/video/1';
+            $data->urls = trim($this->urls);
             $data->type = "2";
         } else {
             $data->type = "0";
