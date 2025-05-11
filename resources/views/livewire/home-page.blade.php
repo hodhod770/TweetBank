@@ -3,6 +3,13 @@
     <div class="container mx-auto px-4 py-8">
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <div class="px-6 py-4 border-b">
+                <select wire:model.live='h_id' style="width:min-content" name="" id="" class="form-select">
+                    <option value="0">كل الحملات</option>
+                    @foreach ($hm as $item)
+                        <option value="{{ $item->uid }}">{{ $item->name }}</option>
+                    @endforeach
+                </select>
+                <a href="{{route('Reports1',['id'=>$h_id])}}" class="btn btn-primary m-2">طباعة تقرير</a>
                 <h1 class="text-2xl font-bold text-gray-800">قائمة عناوين IP</h1>
                 <p class="text-gray-600 mt-1">إجمالي السجلات: {{ $ips->total() }}</p>
             </div>
